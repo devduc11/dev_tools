@@ -1,0 +1,70 @@
+namespace EditorTools.ProjectInit.Templates
+{
+    public static class BaseSoundButtonTemplate
+    {
+        public static string GetContent()
+        {
+            return
+@"using System.Collections;
+using Eagle.BaseGame;
+using Teo.AutoReference;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BaseSoundButton : BaseButton
+{
+    [SerializeField, Get] private Image image;
+    [SerializeField, Get] protected RectTransform rect;
+    [SerializeField] private bool isPauseBtn;
+
+    protected override void Start()
+    {
+        base.Start();
+        if (image.type == Image.Type.Sliced)
+        {
+            StartCoroutine(UpdatePixelsPerUnitMultiplier());
+        }
+    }
+
+    private IEnumerator UpdatePixelsPerUnitMultiplier()
+    {
+        yield return new WaitForEndOfFrame();
+        image.pixelsPerUnitMultiplier = image.sprite.texture.height / rect.rect.height;
+    }
+
+    protected override void OnClickListener()
+    {
+        PlaySound();
+
+        if (isPauseBtn) return;
+
+        base.OnClickListener();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        transform.localScale = Vector3.one;
+    }
+
+    protected virtual void PlaySound()
+    {
+        if (!SoundManager.Instance.CheckExistSFX(SoundType.Button))
+        {
+            SoundManager.Instance.Play(SoundType.Button);
+        }
+    }
+
+    protected void SetIsPauseBtn(bool bl)
+    {
+        isPauseBtn = bl;
+    }
+
+    protected override void OnClick()
+    {
+        // throw new System.NotImplementedException();
+    }
+}";
+        }
+    }
+}
