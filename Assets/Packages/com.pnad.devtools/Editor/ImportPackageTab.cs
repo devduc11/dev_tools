@@ -57,13 +57,13 @@ namespace PNAD.DevTools.Editor
                 InfoUrl   = "https://github.com/mob-sakai/ParticleEffectForUGUI",
                 Note      = "mob-sakai/ParticleEffectForUGUI",
             },
-            new PackageEntry
-            {
-                Name      = "PNAD DevTools",
-                ImportUrl = "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main",
-                InfoUrl   = "https://github.com/devduc11/dev_tools",
-                Note      = "PNAD DevTools (Latest Main Branch)",
-            },
+            // new PackageEntry
+            // {
+            //     Name      = "PNAD DevTools",
+            //     ImportUrl = "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main",
+            //     InfoUrl   = "https://github.com/devduc11/dev_tools",
+            //     Note      = "PNAD DevTools (Latest Main Branch)",
+            // },
         };
 
         // ----------------------------------------------------------------
