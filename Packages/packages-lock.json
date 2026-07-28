@@ -42,6 +42,15 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.pnad.devtools": {
+      "version": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
+      "hash": "dc1271e120ef5683f3d04a39f70582793acf8156"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.11",
       "depth": 0,
@@ -79,6 +88,13 @@
         "com.unity.nuget.mono-cecil": "1.11.5",
         "com.unity.test-framework.performance": "3.0.3"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
