@@ -7,7 +7,7 @@ Dự án chứa Unity Editor Package **PNAD DevTools** (`com.pnad.devtools`).
 Mở Unity Editor ở dự án mới, chọn **Window → Package Manager → (+) Add package from git URL...** và dán đường link sau:
 
 ```text
-https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#v1.0.0
+https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main
 ```
 
 Hoặc thêm vào file `Packages/manifest.json`:
@@ -15,7 +15,7 @@ Hoặc thêm vào file `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#v1.0.0"
+    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main"
   }
 }
 ```

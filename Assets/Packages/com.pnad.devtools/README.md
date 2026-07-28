@@ -27,7 +27,7 @@ Bộ công cụ Editor tích hợp cho Unity, hỗ trợ quy trình khởi tạo
 4. Dán URL sau vào và nhấn **Add**:
 
 ```
-https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#v1.0.0
+https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main
 ```
 
 ---
@@ -39,7 +39,7 @@ Mở file `Packages/manifest.json` trong project và thêm dòng sau vào `depen
 ```json
 {
   "dependencies": {
-    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#v1.0.0"
+    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main"
   }
 }
 ```

@@ -14,7 +14,7 @@
     "com.eagle.basegame": "https://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@github.com/dat-dangba/EagleBaseGame.git",
     "com.eagle.sdk": "https://github.com/dat-dangba/EagleSDK.git",
     "com.google.external-dependency-manager": "1.2.178",
-    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools",
+    "com.pnad.devtools": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main",
     "com.unity.ai.navigation": "2.0.11",
     "com.unity.collab-proxy": "2.11.4",
     "com.unity.ide.rider": "3.0.39",
