@@ -16,8 +16,11 @@ public class InitProjectStructure
             "Scripts/Base",
             "Scripts/SaveGame",
             "Scripts/ScriptableObject",
+            "Scripts/Constant",
             "Scripts/Manager",
+            "Scripts/Sound",
             "Scripts/UI/UIManager",
+            "Scripts/UI/UIManager/LoadingUI",
             "Sprites"
         };
 
