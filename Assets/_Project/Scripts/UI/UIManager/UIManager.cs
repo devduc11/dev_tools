@@ -1,11 +1,4 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class UIManagerTemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using Eagle.BaseGame;
+﻿using Eagle.BaseGame;
 using Teo.AutoReference;
 using UnityEngine;
 
@@ -14,7 +7,7 @@ public class UIManager : BaseUIManager<UIManager>
     [SerializeField, FindInScene] private Canvas canvas;
     public Canvas Canvas => canvas;
 
-    [SerializeField, FindInScene, Name(""MainCanvas"")]
+    [SerializeField, FindInScene, Name("MainCanvas")]
     private Transform parent;
     public Transform MainCanvas => parent;
 
@@ -23,7 +16,7 @@ public class UIManager : BaseUIManager<UIManager>
 
     protected override string GetFolderPrefabs()
     {
-        return ""Assets/_Project/Prefab/UI"";
+        return "Assets/_Project/Prefab/UI";
     }
 
     protected override Transform GetParent()
@@ -54,7 +47,4 @@ public class UIManager : BaseUIManager<UIManager>
         return screenPoint;
     }
    
-}";
-        }
-    }
 }

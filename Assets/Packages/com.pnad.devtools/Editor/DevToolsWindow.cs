@@ -114,10 +114,7 @@ namespace PNAD.DevTools.Editor
         // ------------------------------------------------------------------
         private void DrawImportPackageTab()
         {
-            EditorGUILayout.HelpBox(
-            "Import package cần thiết của dự án.",
-            MessageType.Info
-            );
+            ImportPackageTab.Draw();
         }
     }
 }
