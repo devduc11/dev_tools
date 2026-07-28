@@ -99,6 +99,34 @@ namespace PNAD.DevTools.Editor
                 // Gọi hàm Init từ class InitProjectStructure của bạn
                 InitProjectStructure.Init();
             }
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("📋 Install Script Templates → Assets/ScriptTemplates", GUILayout.Height(45)))
+            {
+                ScriptTemplateInstaller.Install();
+            }
+
+            // Hiển thị cảnh báo và nút Restart sau khi Install có copy file mới
+            if (ScriptTemplateInstaller.NeedsRestart)
+            {
+                GUILayout.Space(15);
+
+                EditorGUILayout.HelpBox(
+                    "⚠️ Script Templates đã được cài đặt.\n" +
+                    "Unity cần Restart để menu Create cập nhật đầy đủ.",
+                    MessageType.Warning
+                );
+
+                GUILayout.Space(8);
+
+                GUI.backgroundColor = new Color(1f, 0.45f, 0.45f);
+                if (GUILayout.Button("🔄 Restart Unity", GUILayout.Height(40)))
+                {
+                    EditorApplication.OpenProject(System.IO.Directory.GetCurrentDirectory());
+                }
+                GUI.backgroundColor = Color.white;
+            }
         }
 
         // ------------------------------------------------------------------
