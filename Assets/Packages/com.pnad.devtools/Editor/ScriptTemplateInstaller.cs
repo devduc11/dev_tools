@@ -1,6 +1,7 @@
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-using System.IO;
+using UpmPackageInfo = UnityEditor.PackageManager.PackageInfo;
 
 namespace PNAD.DevTools.Editor
 {
@@ -11,10 +12,6 @@ namespace PNAD.DevTools.Editor
     /// </summary>
     internal static class ScriptTemplateInstaller
     {
-        // Thư mục nguồn trong package (embedded)
-        private const string SourceRelativePath =
-            "Assets/Packages/com.pnad.devtools/Runtime/ScriptTemplates";
-
         // Thư mục đích Unity đọc Script Templates
         private const string DestinationPath = "Assets/ScriptTemplates";
 
@@ -26,13 +23,41 @@ namespace PNAD.DevTools.Editor
         public static bool NeedsRestart { get; private set; } = false;
 
         // ----------------------------------------------------------------
+        // Tìm đường dẫn vật lý của package (hoạt động với mọi cách cài)
+        // ----------------------------------------------------------------
+        private static string FindSourceAbsolutePath()
+        {
+            // Ưu tiên 1: UPM package (GitHub / registry / Packages/ folder)
+            var packageInfo = UpmPackageInfo.FindForAssembly(typeof(ScriptTemplateInstaller).Assembly);
+            if (packageInfo != null)
+            {
+                return Path.Combine(packageInfo.resolvedPath, "Runtime", "ScriptTemplates");
+            }
+
+            // Ưu tiên 2: Embedded package (Assets/Packages/)
+            // Tìm file script này trong AssetDatabase → derive package root
+            string[] guids = AssetDatabase.FindAssets($"{nameof(ScriptTemplateInstaller)} t:Script");
+            if (guids.Length > 0)
+            {
+                string scriptAssetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
+                // scriptAssetPath = "Assets/Packages/com.pnad.devtools/Editor/ScriptTemplateInstaller.cs"
+                string editorDir    = Path.GetDirectoryName(scriptAssetPath); // .../Editor
+                string packageRoot  = Path.GetDirectoryName(editorDir);       // .../com.pnad.devtools
+                return Path.GetFullPath(Path.Combine(packageRoot, "Runtime", "ScriptTemplates"));
+            }
+
+            Debug.LogError("[ScriptTemplateInstaller] ❌ Không tìm thấy thông tin package.");
+            return null;
+        }
+
+        // ----------------------------------------------------------------
         // Entry point
         // ----------------------------------------------------------------
         public static void Install()
         {
-            string sourceAbsolute = Path.GetFullPath(SourceRelativePath);
+            string sourceAbsolute = FindSourceAbsolutePath();
 
-            if (!Directory.Exists(sourceAbsolute))
+            if (string.IsNullOrEmpty(sourceAbsolute) || !Directory.Exists(sourceAbsolute))
             {
                 Debug.LogError($"[ScriptTemplateInstaller] ❌ Không tìm thấy thư mục nguồn: {sourceAbsolute}");
                 return;
