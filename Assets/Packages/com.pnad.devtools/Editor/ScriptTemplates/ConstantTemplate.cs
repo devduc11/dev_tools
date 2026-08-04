@@ -7,7 +7,7 @@ namespace EditorTools.ProjectInit.Templates
             return
 @"public static class Constant
 {
-   public const int DataSaveVersion = 1;
+   public const int DATA_SAVE_VERSION = 1;
 }
 ";
         }
