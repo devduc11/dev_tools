@@ -39,7 +39,7 @@ public class SaveManager : BaseSaveManager<SaveManager, DataSave>
 
     protected override int Version()
     {
-        return Constant.DataSaveVersion;
+        return Constant.DATA_SAVE_VERSION;
     }
 
     protected override void LoadData()
