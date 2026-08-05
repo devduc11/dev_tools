@@ -1,11 +1,4 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class SaveManagerTemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using Eagle.BaseGame;
+using Eagle.BaseGame;
 using UnityEngine;
 
 public class SaveManager : BaseSaveManager<SaveManager, DataSave>
@@ -17,13 +10,13 @@ public class SaveManager : BaseSaveManager<SaveManager, DataSave>
 #endif
     }
 
-    [ContextMenu(""Clear Data"")]
+    [ContextMenu("Clear Data")]
     public override void ClearData()
     {
         base.ClearData();
     }
 
-    [ContextMenu(""Save Data"")]
+    [ContextMenu("Save Data")]
     public override void SaveData()
     {
         base.SaveData();
@@ -45,8 +38,5 @@ public class SaveManager : BaseSaveManager<SaveManager, DataSave>
     protected override void LoadData()
     {
         base.LoadData();
-    }
-}";
-        }
     }
 }

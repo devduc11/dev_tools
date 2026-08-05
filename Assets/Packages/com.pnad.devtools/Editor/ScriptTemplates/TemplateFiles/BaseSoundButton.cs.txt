@@ -1,11 +1,4 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class BaseSoundButtonTemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using System.Collections;
+using System.Collections;
 using Eagle.BaseGame;
 using Teo.AutoReference;
 using UnityEngine;
@@ -63,8 +56,5 @@ public class BaseSoundButton : BaseButton
     protected override void OnClick()
     {
         // throw new System.NotImplementedException();
-    }
-}";
-        }
     }
 }

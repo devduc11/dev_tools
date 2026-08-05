@@ -1,11 +1,4 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class BaseTimeScaleUITemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using Eagle.BaseGame;
+using Eagle.BaseGame;
 using UnityEngine;
 
 public class BaseTimeScaleUI : BaseUI
@@ -49,7 +42,4 @@ public class BaseTimeScaleUI : BaseUI
         return null;
     }
 
-}";
-        }
-    }
 }

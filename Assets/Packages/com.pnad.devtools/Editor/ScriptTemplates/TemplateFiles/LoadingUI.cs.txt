@@ -1,4 +1,4 @@
-﻿using Eagle.BaseGame;
+using Eagle.BaseGame;
 using Teo.AutoReference;
 using UnityEngine;
 using UnityEngine.UI;

@@ -24,7 +24,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "73f0c8a1b6a88b808da2007e74190f418084dbfe"
+      "hash": "568e2ad0aa689fef5513e08e95795a2f76afb6d5"
     },
     "com.eagle.sdk": {
       "version": "https://github.com/dat-dangba/EagleSDK.git",
@@ -33,7 +33,7 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.2"
       },
-      "hash": "444c677ac4a863a969bf734718da0a69a8c62b3b"
+      "hash": "f0860b372da29eda4dd8961caf2b034934abb736"
     },
     "com.google.external-dependency-manager": {
       "version": "1.2.178",
@@ -41,15 +41,6 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
-    },
-    "com.pnad.devtools": {
-      "version": "https://github.com/devduc11/dev_tools.git?path=Assets/Packages/com.pnad.devtools#main",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.editorcoroutines": "1.0.0"
-      },
-      "hash": "68e5d9c4b602aa4d0210275d6ad958b0ac6350fe"
     },
     "com.unity.ai.navigation": {
       "version": "2.0.11",
@@ -88,13 +79,6 @@
         "com.unity.nuget.mono-cecil": "1.11.5",
         "com.unity.test-framework.performance": "3.0.3"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.editorcoroutines": {
-      "version": "1.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {

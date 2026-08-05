@@ -1,14 +1,7 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class SoundSOTemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = ""SoundSO"", menuName = ""ScriptableObject/SoundSO"", order = 1)]
+[CreateAssetMenu(fileName = "SoundSO", menuName = "ScriptableObject/SoundSO", order = 1)]
 public class SoundSO : ScriptableObject
 {
     [SerializeField] List<SoundElement> list;
@@ -32,16 +25,16 @@ public class SoundSO : ScriptableObject
         return null;
     }
 
-    [ContextMenu(""Get Sound Type"")]
+    [ContextMenu("Get Sound Type")]
     private void GetSoundTypeByAudioClipName()
     {
-        Debug.Log($""datdb -1111"");
-        string name = ""Fairy Dust"";
+        Debug.Log($"datdb -1111");
+        string name = "Fairy Dust";
         foreach (var item in list)
         {
             if (item.AudioClip.name == name)
             {
-                Debug.Log($""datdb - {item.SoundType}"");
+                Debug.Log($"datdb - {item.SoundType}");
                 return;
             }
         }
@@ -76,9 +69,5 @@ public class SoundElement
     {
         get => audioClip;
         set => audioClip = value;
-    }
-}
-";
-        }
     }
 }

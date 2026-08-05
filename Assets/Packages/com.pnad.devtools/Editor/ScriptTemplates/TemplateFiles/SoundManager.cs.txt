@@ -1,11 +1,4 @@
-namespace EditorTools.ProjectInit.Templates
-{
-    public static class SoundManagerTemplate
-    {
-        public static string GetContent()
-        {
-            return
-@"using System.Collections.Generic;
+using System.Collections.Generic;
 using Eagle.BaseGame;
 using Teo.AutoReference;
 using UnityEngine;
@@ -19,7 +12,7 @@ public class SoundData
 
 public class SoundManager : BaseSoundManager<SoundManager>
 {
-    [SerializeField, FindInAssets, Path(""Assets/_Project/Scripts/Sound/SoundSO.asset"")]
+    [SerializeField, FindInAssets, Path("Assets/_Project/Scripts/Sound/SoundSO.asset")]
     private SoundSO soundSO;
 
     private Dictionary<SoundType, SoundData> dict = new();
@@ -76,7 +69,7 @@ public class SoundManager : BaseSoundManager<SoundManager>
         }
     }
 
-    // [ContextMenu(""Play Vibrate"")]
+    // [ContextMenu("Play Vibrate")]
     public void PlayVibrate()
     {
         bool isVibrateOn = SaveManager.Instance.DataSave.IsVibrateOn;
@@ -89,7 +82,7 @@ public class SoundManager : BaseSoundManager<SoundManager>
         }
         else
         {
-            // Debug.Log($""pnad: (SoundManager): Device does not support vibration"");
+            // Debug.Log($"pnad: (SoundManager): Device does not support vibration");
         }
     }
     private List<AudioSource> sfxPoolCached;
@@ -102,7 +95,7 @@ public class SoundManager : BaseSoundManager<SoundManager>
         // Truy cập sfxPool private trong BaseSoundManager bằng Reflection (chỉ lấy field một lần để tối ưu hiệu năng)
         if (sfxPoolCached == null)
         {
-            var field = typeof(BaseSoundManager<SoundManager>).GetField(""sfxPool"", 
+            var field = typeof(BaseSoundManager<SoundManager>).GetField("sfxPool", 
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             if (field != null)
             {
@@ -122,9 +115,5 @@ public class SoundManager : BaseSoundManager<SoundManager>
         }
 
         return false;
-    }
-}
-";
-        }
     }
 }

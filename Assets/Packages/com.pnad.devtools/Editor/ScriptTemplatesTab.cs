@@ -39,61 +39,61 @@ namespace PNAD.DevTools.Editor
                 {
                     Label        = "📄 Generate UIManager Script",
                     RelativePath = "Scripts/UI/UIManager/UIManager.cs",
-                    Content      = EditorTools.ProjectInit.Templates.UIManagerTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("UIManager.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate LoadingUI Script",
                     RelativePath = "Scripts/UI/UIManager/LoadingUI/LoadingUI.cs",
-                    Content      = EditorTools.ProjectInit.Templates.LoadingUITemplate.GetContent(),
+                    Content      = TemplateLoader.Load("LoadingUI.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate BaseTimeScaleUI Script",
                     RelativePath = "Scripts/Base/BaseTimeScaleUI.cs",
-                    Content      = EditorTools.ProjectInit.Templates.BaseTimeScaleUITemplate.GetContent(),
+                    Content      = TemplateLoader.Load("BaseTimeScaleUI.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate BaseSoundButton Script",
                     RelativePath = "Scripts/Base/BaseSoundButton.cs",
-                    Content      = EditorTools.ProjectInit.Templates.BaseSoundButtonTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("BaseSoundButton.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate SaveManager Script",
                     RelativePath = "Scripts/SaveGame/SaveManager.cs",
-                    Content      = EditorTools.ProjectInit.Templates.SaveManagerTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("SaveManager.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate DataSave Script",
                     RelativePath = "Scripts/SaveGame/DataSave.cs",
-                    Content      = EditorTools.ProjectInit.Templates.DataSaveTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("DataSave.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate Constant Script",
                     RelativePath = "Scripts/Constant/Constant.cs",
-                    Content      = EditorTools.ProjectInit.Templates.ConstantTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("Constant.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate GameAction Script",
                     RelativePath = "Scripts/Constant/GameAction.cs",
-                    Content      = EditorTools.ProjectInit.Templates.GameActionTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("GameAction.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate SoundManager Script",
                     RelativePath = "Scripts/Sound/SoundManager.cs",
-                    Content      = EditorTools.ProjectInit.Templates.SoundManagerTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("SoundManager.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate SoundSO Script",
                     RelativePath = "Scripts/Sound/SoundSO.cs",
-                    Content      = EditorTools.ProjectInit.Templates.SoundSOTemplate.GetContent(),
+                    Content      = TemplateLoader.Load("SoundSO.cs.txt"),
                 },
             };
 
