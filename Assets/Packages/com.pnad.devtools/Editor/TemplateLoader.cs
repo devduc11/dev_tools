@@ -11,7 +11,7 @@ namespace PNAD.DevTools.Editor
     /// </summary>
     internal static class TemplateLoader
     {
-        private const string TemplateFolderName = "TemplateFiles";
+        private const string TEMPLATE_FOLDER_NAME = "TemplateFiles";
 
         /// <summary>
         /// Tìm đường dẫn tuyệt đối tới thư mục TemplateFiles của package.
@@ -26,7 +26,7 @@ namespace PNAD.DevTools.Editor
                 string scriptAssetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
                 // scriptAssetPath = ".../com.pnad.devtools/Editor/TemplateLoader.cs"
                 string editorDir = Path.GetDirectoryName(scriptAssetPath); // .../Editor
-                string templateDir = Path.Combine(editorDir, "ScriptTemplates", TemplateFolderName);
+                string templateDir = Path.Combine(editorDir, "ScriptTemplates", TEMPLATE_FOLDER_NAME);
                 return Path.GetFullPath(templateDir);
             }
 

@@ -1,0 +1,199 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.cs]
+indent_size = 4
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+csharp_prefer_braces = false:silent
+
+# ==========================================================
+# NAMING CONVENTION ENFORCEMENT (Unity Naming Convention)
+# ==========================================================
+
+# ---------- Symbols ----------
+
+# Interfaces
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+dotnet_naming_symbols.interfaces.applicable_accessibilities = *
+
+# Classes, Structs, Enums, Delegates
+dotnet_naming_symbols.types.applicable_kinds = class, struct, enum, delegate
+dotnet_naming_symbols.types.applicable_accessibilities = *
+
+# Public / protected internal fields (KHÔNG bao gồm internal riêng)
+dotnet_naming_symbols.public_fields.applicable_kinds = field
+dotnet_naming_symbols.public_fields.applicable_accessibilities = public, protected_internal
+
+# Internal fields (tách riêng khỏi public)
+dotnet_naming_symbols.internal_fields.applicable_kinds = field
+dotnet_naming_symbols.internal_fields.applicable_accessibilities = internal
+
+# Protected fields (tách riêng khỏi public)
+dotnet_naming_symbols.protected_fields.applicable_kinds = field
+dotnet_naming_symbols.protected_fields.applicable_accessibilities = protected
+
+# Private / private protected instance fields
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private, private_protected
+dotnet_naming_symbols.private_fields.required_modifiers = readonly, volatile
+
+dotnet_naming_symbols.private_mutable_fields.applicable_kinds = field
+dotnet_naming_symbols.private_mutable_fields.applicable_accessibilities = private, private_protected
+
+# Private static fields
+dotnet_naming_symbols.private_static_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities = private, private_protected
+dotnet_naming_symbols.private_static_fields.required_modifiers = static
+
+# Const fields
+dotnet_naming_symbols.const_fields.applicable_kinds = field
+dotnet_naming_symbols.const_fields.required_modifiers = const
+
+# Static readonly fields
+dotnet_naming_symbols.static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_fields.required_modifiers = static, readonly
+
+# Properties, Methods, Classes, Structs, Enums, Delegates
+dotnet_naming_symbols.members.applicable_kinds = property, method, class, struct, enum, delegate
+
+# Events (tách riêng để enforce prefix "On")
+dotnet_naming_symbols.events.applicable_kinds = event
+dotnet_naming_symbols.events.applicable_accessibilities = *
+
+# Parameters and locals
+dotnet_naming_symbols.parameters_and_locals.applicable_kinds = parameter, local
+
+# ---------- Styles ----------
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.all_upper_snake_case.capitalization = all_upper
+dotnet_naming_style.all_upper_snake_case.word_separator = _
+
+dotnet_naming_style.camel_case.capitalization = camel_case
+
+dotnet_naming_style.interface_style.capitalization = pascal_case
+dotnet_naming_style.interface_style.required_prefix = I
+
+dotnet_naming_style.private_field_style.capitalization = camel_case
+dotnet_naming_style.private_field_style.required_prefix = _
+
+dotnet_naming_style.static_field_style.capitalization = pascal_case
+
+dotnet_naming_style.protected_field_style.capitalization = pascal_case
+dotnet_naming_style.protected_field_style.required_prefix = _
+
+dotnet_naming_style.internal_field_style.capitalization = pascal_case
+dotnet_naming_style.internal_field_style.required_suffix = Internal
+
+dotnet_naming_style.event_style.capitalization = pascal_case
+dotnet_naming_style.event_style.required_prefix = On
+
+# ---------- Rules ----------
+
+# Interfaces: I + PascalCase
+dotnet_naming_rule.interfaces_rule.symbols = interfaces
+dotnet_naming_rule.interfaces_rule.style = interface_style
+dotnet_naming_rule.interfaces_rule.severity = warning
+
+# Classes/Structs/Enums/Delegates: PascalCase
+dotnet_naming_rule.types_rule.symbols = types
+dotnet_naming_rule.types_rule.style = pascal_case
+dotnet_naming_rule.types_rule.severity = warning
+
+# Public fields: PascalCase (catch-all cho public/internal/protected)
+dotnet_naming_rule.public_fields_rule.symbols = public_fields
+dotnet_naming_rule.public_fields_rule.style = pascal_case
+dotnet_naming_rule.public_fields_rule.severity = suggestion
+
+# Const fields: ALL_CAPS_SNAKE_CASE (phải đứng trước các rule private catch-all)
+dotnet_naming_rule.const_fields_rule.symbols = const_fields
+dotnet_naming_rule.const_fields_rule.style = all_upper_snake_case
+dotnet_naming_rule.const_fields_rule.severity = warning
+
+# Static readonly fields: PascalCase (phải đứng trước private_static_fields_rule
+# vì "static readonly" cũng match required_modifiers=static của rule đó)
+dotnet_naming_rule.static_readonly_fields_rule.symbols = static_readonly_fields
+dotnet_naming_rule.static_readonly_fields_rule.style = pascal_case
+dotnet_naming_rule.static_readonly_fields_rule.severity = suggestion
+
+# Private static fields (không readonly): PascalCase
+dotnet_naming_rule.private_static_fields_rule.symbols = private_static_fields
+dotnet_naming_rule.private_static_fields_rule.style = static_field_style
+dotnet_naming_rule.private_static_fields_rule.severity = warning
+
+# Protected fields (mọi modifier trừ const/static readonly, đã bị 2 rule trên bắt trước): _PascalCase
+dotnet_naming_rule.protected_fields_rule.symbols = protected_fields
+dotnet_naming_rule.protected_fields_rule.style = protected_field_style
+dotnet_naming_rule.protected_fields_rule.severity = warning
+
+# Internal fields (mọi modifier trừ const/static readonly, đã bị 2 rule trên bắt trước): PascalCase + hậu tố "Internal"
+dotnet_naming_rule.internal_fields_rule.symbols = internal_fields
+dotnet_naming_rule.internal_fields_rule.style = internal_field_style
+dotnet_naming_rule.internal_fields_rule.severity = warning
+
+# Private readonly/volatile fields (không static): _camelCase
+dotnet_naming_rule.private_fields_rule.symbols = private_fields
+dotnet_naming_rule.private_fields_rule.style = private_field_style
+dotnet_naming_rule.private_fields_rule.severity = warning
+
+# Private mutable fields (catch-all, không const/static/readonly/volatile): _camelCase
+# QUAN TRỌNG: rule này phải đứng SAU CÙNG trong nhóm field vì nó match mọi private field
+# không giới hạn modifier — đứng trước sẽ "nuốt" mất các rule const/static/readonly ở trên.
+dotnet_naming_rule.private_mutable_fields_rule.symbols = private_mutable_fields
+dotnet_naming_rule.private_mutable_fields_rule.style = private_field_style
+dotnet_naming_rule.private_mutable_fields_rule.severity = warning
+
+# Properties/Methods/Classes/Structs/Enums/Delegates: PascalCase
+dotnet_naming_rule.members_rule.symbols = members
+dotnet_naming_rule.members_rule.style = pascal_case
+dotnet_naming_rule.members_rule.severity = warning
+
+# Events: On + PascalCase
+dotnet_naming_rule.events_rule.symbols = events
+dotnet_naming_rule.events_rule.style = event_style
+dotnet_naming_rule.events_rule.severity = warning
+
+# Parameters/Locals: camelCase
+dotnet_naming_rule.parameters_and_locals_rule.symbols = parameters_and_locals
+dotnet_naming_rule.parameters_and_locals_rule.style = camel_case
+dotnet_naming_rule.parameters_and_locals_rule.severity = warning
+
+# ==========================================================
+# Formatting / Style bổ sung
+# ==========================================================
+
+# var usage
+csharp_style_var_for_built_in_types = true:silent
+csharp_style_var_when_type_is_apparent = true:silent
+csharp_style_var_elsewhere = true:silent
+
+# Modifier order
+csharp_preferred_modifier_order = public, private, protected, internal, static, readonly, override, virtual, async = suggestion
+
+# this. qualification (Unity code thường tắt this.)
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+
+# Expression-bodied members
+csharp_style_expression_bodied_methods = false:silent
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_expression_bodied_accessors = true:suggestion
+
+# Unused usings/vars
+dotnet_diagnostic.IDE0005.severity = warning
+dotnet_diagnostic.CS0168.severity = warning
+dotnet_diagnostic.CS0219.severity = warning

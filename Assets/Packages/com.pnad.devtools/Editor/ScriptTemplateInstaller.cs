@@ -13,7 +13,7 @@ namespace PNAD.DevTools.Editor
     internal static class ScriptTemplateInstaller
     {
         // Thư mục đích Unity đọc Script Templates
-        private const string DestinationPath = "Assets/ScriptTemplates";
+        private const string DESTINATION_PATH = "Assets/ScriptTemplates";
 
         // ----------------------------------------------------------------
         // State
@@ -64,10 +64,10 @@ namespace PNAD.DevTools.Editor
             }
 
             // Tạo Assets/ScriptTemplates nếu chưa có
-            if (!AssetDatabase.IsValidFolder(DestinationPath))
+            if (!AssetDatabase.IsValidFolder(DESTINATION_PATH))
             {
                 AssetDatabase.CreateFolder("Assets", "ScriptTemplates");
-                Debug.Log($"[ScriptTemplateInstaller] 📁 Đã tạo thư mục: {DestinationPath}");
+                Debug.Log($"[ScriptTemplateInstaller] 📁 Đã tạo thư mục: {DESTINATION_PATH}");
             }
 
             string[] txtFiles = Directory.GetFiles(sourceAbsolute, "*.txt", SearchOption.TopDirectoryOnly);
@@ -84,7 +84,7 @@ namespace PNAD.DevTools.Editor
             foreach (string srcFile in txtFiles)
             {
                 string fileName = Path.GetFileName(srcFile);
-                string destFile = Path.Combine(Path.GetFullPath(DestinationPath), fileName);
+                string destFile = Path.Combine(Path.GetFullPath(DESTINATION_PATH), fileName);
 
                 // Bỏ qua nếu file đích đã giống hệt (so sánh nội dung)
                 if (File.Exists(destFile) && FilesAreIdentical(srcFile, destFile))

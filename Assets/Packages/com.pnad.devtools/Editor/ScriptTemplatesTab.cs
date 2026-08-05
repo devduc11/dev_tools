@@ -22,7 +22,7 @@ namespace PNAD.DevTools.Editor
         // ----------------------------------------------------------------
         // State
         // ----------------------------------------------------------------
-        private static Vector2 _scrollPos;
+        private static Vector2 ScrollPos;
 
         // ----------------------------------------------------------------
         // Entry point: được gọi mỗi frame từ DevToolsWindow.OnGUI()
@@ -105,7 +105,7 @@ namespace PNAD.DevTools.Editor
             GUILayout.Space(10);
 
             // ---- ScrollView bao toàn bộ danh sách nút ----
-            _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
+            ScrollPos = EditorGUILayout.BeginScrollView(ScrollPos);
 
             GUILayout.Space(10);
 

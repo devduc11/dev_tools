@@ -6,14 +6,14 @@ namespace PNAD.DevTools.Editor
     public class DevToolsWindow : EditorWindow
     {
         // Danh sách các tab bên cột trái
-        private readonly string[] tabNames = new string[]
+        private readonly string[] _tabNames = new string[]
         {
             "Init Project",
             "Script Templates",
             "Import Package"
         };
 
-        private int selectedTabIndex = 0;
+        private int _selectedTabIndex = 0;
 
         // Mở cửa sổ từ Menu Bar
         [MenuItem("Tools/PNAD DevTools")]
@@ -39,12 +39,12 @@ namespace PNAD.DevTools.Editor
             GUILayout.Space(10);
 
             // Danh sách các tab bấm chọn (Đã fix style)
-            selectedTabIndex = GUILayout.SelectionGrid(
-                selectedTabIndex,
-                tabNames,
+            _selectedTabIndex = GUILayout.SelectionGrid(
+                _selectedTabIndex,
+                _tabNames,
                 1,
                 "LargeButton",
-                GUILayout.Height(tabNames.Length * 38)
+                GUILayout.Height(_tabNames.Length * 38)
             );
 
             EditorGUILayout.EndVertical();
@@ -61,11 +61,11 @@ namespace PNAD.DevTools.Editor
             GUILayout.Space(15);
 
             // Tiêu đề tab hiện tại
-            GUILayout.Label($"  {tabNames[selectedTabIndex]}", EditorStyles.largeLabel, GUILayout.Height(30));
+            GUILayout.Label($"  {_tabNames[_selectedTabIndex]}", EditorStyles.largeLabel, GUILayout.Height(30));
             GUILayout.Space(10);
 
             // Nội dung chi tiết từng Tab
-            switch (selectedTabIndex)
+            switch (_selectedTabIndex)
             {
                 case 0:
                     DrawInitProjectTab();
