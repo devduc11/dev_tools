@@ -6,30 +6,28 @@ using UnityEngine.UI;
 
 public class BaseSoundButton : BaseButton
 {
-    [SerializeField, Get] private Image image;
-    [SerializeField, Get] protected RectTransform rect;
-    [SerializeField] private bool isPauseBtn;
+    [SerializeField, Get] private Image _image;
+    [SerializeField, Get] protected RectTransform _Rect;
+    [SerializeField] private bool _isPauseBtn;
 
     protected override void Start()
     {
         base.Start();
-        if (image.type == Image.Type.Sliced)
-        {
+        if (_image.type == Image.Type.Sliced)
             StartCoroutine(UpdatePixelsPerUnitMultiplier());
-        }
     }
 
     private IEnumerator UpdatePixelsPerUnitMultiplier()
     {
         yield return new WaitForEndOfFrame();
-        image.pixelsPerUnitMultiplier = image.sprite.texture.height / rect.rect.height;
+        _image.pixelsPerUnitMultiplier = _image.sprite.texture.height / _Rect.rect.height;
     }
 
     protected override void OnClickListener()
     {
         PlaySound();
 
-        if (isPauseBtn) return;
+        if (_isPauseBtn) return;
 
         base.OnClickListener();
     }
@@ -43,14 +41,12 @@ public class BaseSoundButton : BaseButton
     protected virtual void PlaySound()
     {
         if (!SoundManager.Instance.CheckExistSFX(SoundType.Button))
-        {
             SoundManager.Instance.Play(SoundType.Button);
-        }
     }
 
-    protected void SetIsPauseBtn(bool bl)
+    protected void SetIsPauseBtn(bool isPauseBtn)
     {
-        isPauseBtn = bl;
+        _isPauseBtn = isPauseBtn;
     }
 
     protected override void OnClick()

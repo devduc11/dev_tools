@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SaveManager : BaseSaveManager<SaveManager, DataSave>
 {
-    void OnDestroy()
+    private void OnDestroy()
     {
 #if UNITY_EDITOR
         SaveData();

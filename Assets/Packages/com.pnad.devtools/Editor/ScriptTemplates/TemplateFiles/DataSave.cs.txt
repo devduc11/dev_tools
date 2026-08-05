@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public partial class DataSave : BaseDataSave
 {
-    [SerializeField] private SaveValue<bool> isSfxOn     = new(true);
-    [SerializeField] private SaveValue<bool> isMusicOn   = new(true);
-    [SerializeField] private SaveValue<bool> isVibrateOn = new(true);
-    [SerializeField] private SaveValue<bool> isRate      = new(false);
-    [SerializeField] private SaveValue<int>  session     = new(0);
+    [SerializeField] private SaveValue<bool> _isSfxOn = new(true);
+    [SerializeField] private SaveValue<bool> _isMusicOn = new(true);
+    [SerializeField] private SaveValue<bool> _isVibrateOn = new(true);
+    [SerializeField] private SaveValue<bool> _isRate = new(false);
+    [SerializeField] private SaveValue<int> _session = new(0);
 }

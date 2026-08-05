@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UIManager : BaseUIManager<UIManager>
 {
-    [SerializeField, FindInScene] private Canvas canvas;
-    public Canvas Canvas => canvas;
+    [SerializeField, FindInScene] private Canvas _canvas;
+    public Canvas Canvas => _canvas;
 
     [SerializeField, FindInScene, Name("MainCanvas")]
-    private Transform parent;
-    public Transform MainCanvas => parent;
+    private Transform _parent;
+    public Transform MainCanvas => _parent;
 
-    private RectTransform rectTransformCanvas;
-    public Vector2 CanvasSize => rectTransformCanvas.rect.size;
+    private RectTransform _rectTransformCanvas;
+    public Vector2 CanvasSize => _rectTransformCanvas.rect.size;
 
     protected override string GetFolderPrefabs()
     {
@@ -21,7 +21,7 @@ public class UIManager : BaseUIManager<UIManager>
 
     protected override Transform GetParent()
     {
-        return parent;
+        return _parent;
     }
 
     protected override void OnInitCompleted()
@@ -32,7 +32,7 @@ public class UIManager : BaseUIManager<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        rectTransformCanvas = canvas.GetComponent<RectTransform>();
+        _rectTransformCanvas = _canvas.GetComponent<RectTransform>();
     }
 
     public new T Show<T>(System.Action<T> onPreShow = null) where T : BaseUI
@@ -43,8 +43,7 @@ public class UIManager : BaseUIManager<UIManager>
 
     public Vector2 WorldToUI(Vector3 worldPos)
     {
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(worldPos);
+        var screenPoint = Camera.main.WorldToScreenPoint(worldPos);
         return screenPoint;
     }
-   
 }

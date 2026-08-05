@@ -4,22 +4,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SoundSO", menuName = "ScriptableObject/SoundSO", order = 1)]
 public class SoundSO : ScriptableObject
 {
-    [SerializeField] List<SoundElement> list;
+    [SerializeField] private List<SoundElement> _list;
 
     public List<SoundElement> List
     {
-        get => list;
-        set => list = value;
+        get => _list;
+        set => _list = value;
     }
 
     public SoundElement GetSoundBySoundType(SoundType soundType)
     {
-        foreach (var item in list)
+        foreach (var item in _list)
         {
             if (item.SoundType == soundType)
-            {
                 return item;
-            }
         }
 
         return null;
@@ -28,9 +26,9 @@ public class SoundSO : ScriptableObject
     [ContextMenu("Get Sound Type")]
     private void GetSoundTypeByAudioClipName()
     {
-        Debug.Log($"datdb -1111");
-        string name = "Fairy Dust";
-        foreach (var item in list)
+        Debug.Log("datdb -1111");
+        var name = "Fairy Dust";
+        foreach (var item in _list)
         {
             if (item.AudioClip.name == name)
             {
@@ -44,30 +42,30 @@ public class SoundSO : ScriptableObject
 public enum SoundType
 {
     None,
-    Main, // nhạc nền home và ingame
+    Main,   // nhạc nền home và ingame
     Button, // click vào các button
 }
 
 [System.Serializable]
 public class SoundElement
 {
-    [SerializeField] SoundType soundType;
-    [SerializeField] AudioClip audioClip;
+    [SerializeField] private SoundType _soundType;
+    [SerializeField] private AudioClip _audioClip;
 
     // (-80 dB) - (0 dB) - (+20 dB)
     //  0.0001f  -  1.0f  -  10.0f
     [Range(0.0001f, 10.0f)]
-    public float dB;
+    public float Db;
 
     public SoundType SoundType
     {
-        get => soundType;
-        set => soundType = value;
+        get => _soundType;
+        set => _soundType = value;
     }
 
     public AudioClip AudioClip
     {
-        get => audioClip;
-        set => audioClip = value;
+        get => _audioClip;
+        set => _audioClip = value;
     }
 }

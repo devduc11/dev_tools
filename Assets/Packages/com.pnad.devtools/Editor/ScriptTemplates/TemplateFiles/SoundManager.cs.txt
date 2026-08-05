@@ -6,16 +6,18 @@ using UnityEngine;
 [System.Serializable]
 public class SoundData
 {
-    public AudioClip clip;
-    public float db;
+    public AudioClip Clip;
+    public float Db;
 }
 
 public class SoundManager : BaseSoundManager<SoundManager>
 {
     [SerializeField, FindInAssets, Path("Assets/_Project/Scripts/Sound/SoundSO.asset")]
-    private SoundSO soundSO;
+    private SoundSO _soundSO;
 
-    private Dictionary<SoundType, SoundData> dict = new();
+    private Dictionary<SoundType, SoundData> _dict = new();
+
+    private List<AudioSource> _sfxPoolCached;
 
     public override bool IsMusicOn()
     {
@@ -41,15 +43,15 @@ public class SoundManager : BaseSoundManager<SoundManager>
     {
         base.Start();
 
-        foreach (var item in soundSO.List)
+        foreach (var item in _soundSO.List)
         {
-            SoundData data = new SoundData()
+            var data = new SoundData
             {
-                clip = item.AudioClip,
-                db = item.dB
+                Clip = item.AudioClip,
+                Db = item.Db
             };
 
-            dict.Add(item.SoundType, data);
+            _dict.Add(item.SoundType, data);
         }
 
         Play(SoundType.Main);
@@ -57,60 +59,46 @@ public class SoundManager : BaseSoundManager<SoundManager>
 
     public void Play(SoundType soundType)
     {
-        bool b = dict.TryGetValue(soundType, out SoundData soundData);
-        if (!b) return;
+        var found = _dict.TryGetValue(soundType, out var soundData);
+        if (!found) return;
         if (soundType == SoundType.Main)
-        {
-            PlayMusic(soundData.clip, soundData.db);
-        }
+            PlayMusic(soundData.Clip, soundData.Db);
         else
-        {
-            PlaySFX(soundData.clip, soundData.db);
-        }
+            PlaySFX(soundData.Clip, soundData.Db);
     }
 
     // [ContextMenu("Play Vibrate")]
     public void PlayVibrate()
     {
-        bool isVibrateOn = SaveManager.Instance.DataSave.IsVibrateOn;
+        var isVibrateOn = SaveManager.Instance.DataSave.IsVibrateOn;
 
         if (!isVibrateOn) return;
 
         if (SystemInfo.supportsVibration)
-        {
             Handheld.Vibrate();
-        }
-        else
-        {
-            // Debug.Log($"pnad: (SoundManager): Device does not support vibration");
-        }
+        // else Debug.Log("pnad: (SoundManager): Device does not support vibration");
     }
-    private List<AudioSource> sfxPoolCached;
 
     public bool CheckExistSFX(SoundType soundType)
     {
         // Tra cứu nhanh Clip bằng Dictionary O(1)
-        if (!dict.TryGetValue(soundType, out var soundData) || soundData.clip == null) return false;
+        if (!_dict.TryGetValue(soundType, out var soundData) || soundData.Clip == null) return false;
 
         // Truy cập sfxPool private trong BaseSoundManager bằng Reflection (chỉ lấy field một lần để tối ưu hiệu năng)
-        if (sfxPoolCached == null)
+        if (_sfxPoolCached == null)
         {
-            var field = typeof(BaseSoundManager<SoundManager>).GetField("sfxPool", 
+            var field = typeof(BaseSoundManager<SoundManager>).GetField("sfxPool",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             if (field != null)
-            {
-                sfxPoolCached = (List<AudioSource>)field.GetValue(this);
-            }
+                _sfxPoolCached = (List<AudioSource>)field.GetValue(this);
         }
 
-        if (sfxPoolCached != null)
+        if (_sfxPoolCached != null)
         {
-            foreach (var item in sfxPoolCached)
+            foreach (var item in _sfxPoolCached)
             {
-                if (item != null && item.clip == soundData.clip && item.isPlaying)
-                {
+                if (item != null && item.clip == soundData.Clip && item.isPlaying)
                     return true;
-                }
             }
         }
 
