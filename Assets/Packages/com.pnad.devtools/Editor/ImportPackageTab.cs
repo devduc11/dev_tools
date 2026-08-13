@@ -40,7 +40,8 @@ namespace PNAD.DevTools.Editor
                 Name      = "EagleSDK",
                 ImportUrl = "https://github.com/dat-dangba/EagleSDK.git",
                 InfoUrl   = "https://github.com/dat-dangba/EagleSDK",
-                Token     = "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",
+                // Token     = "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",
+                Token     = "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",
                 TokenLabel = "SDK Token  (Log Level: Verbose)",
             },
             new PackageEntry
