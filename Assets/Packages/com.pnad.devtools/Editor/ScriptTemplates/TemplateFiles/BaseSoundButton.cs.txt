@@ -1,5 +1,6 @@
 using System.Collections;
-using Eagle.BaseGame;
+using Eagle;
+using Eagle.Core;
 using Teo.AutoReference;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class BaseSoundButton : BaseButton
     [SerializeField, Get] private Image _image;
     [SerializeField, Get] protected RectTransform _Rect;
     [SerializeField] private bool _isPauseBtn;
+    private ISound Sound => ServiceLocator.Core.Get<ISound>();
+
 
     protected override void Start()
     {
@@ -40,8 +43,7 @@ public class BaseSoundButton : BaseButton
 
     protected virtual void PlaySound()
     {
-        if (!SoundManager.Instance.CheckExistSFX(SoundType.Button))
-            SoundManager.Instance.Play(SoundType.Button);
+        // Sound.PlaySfx(SoundId.Button);
     }
 
     protected void SetIsPauseBtn(bool isPauseBtn)

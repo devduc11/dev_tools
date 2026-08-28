@@ -19,22 +19,6 @@
       },
       "hash": "5a305705f84549e50223d897bb95495edd78bf1a"
     },
-    "com.eagle.basegame": {
-      "version": "https://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@github.com/dat-dangba/EagleBaseGame.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "568e2ad0aa689fef5513e08e95795a2f76afb6d5"
-    },
-    "com.eagle.sdk": {
-      "version": "https://github.com/dat-dangba/EagleSDK.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.2"
-      },
-      "hash": "f0860b372da29eda4dd8961caf2b034934abb736"
-    },
     "com.google.external-dependency-manager": {
       "version": "1.2.178",
       "depth": 0,
@@ -138,13 +122,6 @@
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.5",
       "depth": 3,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.2",
-      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

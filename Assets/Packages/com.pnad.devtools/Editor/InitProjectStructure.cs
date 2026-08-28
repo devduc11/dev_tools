@@ -10,18 +10,9 @@ public class InitProjectStructure
         string root = "Assets/_Project";
 
         string[] folders = {
-            "Material",
-            "Prefab/UI",
-            "ScriptableObject",
             "Scripts/Base",
-            "Scripts/SaveGame",
-            "Scripts/ScriptableObject",
             "Scripts/Constant",
-            "Scripts/Manager",
-            "Scripts/Sound",
-            "Scripts/UI/UIManager",
-            "Scripts/UI/UIManager/LoadingUI",
-            "Sprites"
+            "Scripts/UI/LoadingUI",
         };
 
         foreach (string folder in folders)
@@ -96,7 +87,7 @@ public class InitProjectStructure
     {
         string[] parts = path.Split('/');
         string currentPath = parts[0];
-        
+
         for (int i = 1; i < parts.Length; i++)
         {
             string newPath = $"{currentPath}/{parts[i]}";

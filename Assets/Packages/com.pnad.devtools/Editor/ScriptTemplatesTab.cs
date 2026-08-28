@@ -37,39 +37,15 @@ namespace PNAD.DevTools.Editor
             {
                 new ScriptTemplateEntry
                 {
-                    Label        = "📄 Generate UIManager Script",
-                    RelativePath = "Scripts/UI/UIManager/UIManager.cs",
-                    Content      = TemplateLoader.Load("UIManager.cs.txt"),
-                },
-                new ScriptTemplateEntry
-                {
                     Label        = "📄 Generate LoadingUI Script",
-                    RelativePath = "Scripts/UI/UIManager/LoadingUI/LoadingUI.cs",
+                    RelativePath = "Scripts/UI/LoadingUI/LoadingUI.cs",
                     Content      = TemplateLoader.Load("LoadingUI.cs.txt"),
-                },
-                new ScriptTemplateEntry
-                {
-                    Label        = "📄 Generate BaseTimeScaleUI Script",
-                    RelativePath = "Scripts/Base/BaseTimeScaleUI.cs",
-                    Content      = TemplateLoader.Load("BaseTimeScaleUI.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate BaseSoundButton Script",
                     RelativePath = "Scripts/Base/BaseSoundButton.cs",
                     Content      = TemplateLoader.Load("BaseSoundButton.cs.txt"),
-                },
-                new ScriptTemplateEntry
-                {
-                    Label        = "📄 Generate SaveManager Script",
-                    RelativePath = "Scripts/SaveGame/SaveManager.cs",
-                    Content      = TemplateLoader.Load("SaveManager.cs.txt"),
-                },
-                new ScriptTemplateEntry
-                {
-                    Label        = "📄 Generate DataSave Script",
-                    RelativePath = "Scripts/SaveGame/DataSave.cs",
-                    Content      = TemplateLoader.Load("DataSave.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
@@ -80,21 +56,22 @@ namespace PNAD.DevTools.Editor
                 new ScriptTemplateEntry
                 {
                     Label        = "📄 Generate GameAction Script",
-                    RelativePath = "Scripts/Constant/GameAction.cs",
+                    RelativePath = "Scripts/GameActions/GameAction.cs",
                     Content      = TemplateLoader.Load("GameAction.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
-                    Label        = "📄 Generate SoundManager Script",
-                    RelativePath = "Scripts/Sound/SoundManager.cs",
-                    Content      = TemplateLoader.Load("SoundManager.cs.txt"),
+                    Label        = "📄 Generate BaseSpawnerUI Script",
+                    RelativePath = "Scripts/Base/BaseSpawnerUI.cs",
+                    Content      = TemplateLoader.Load("BaseSpawnerUI.cs.txt"),
                 },
                 new ScriptTemplateEntry
                 {
-                    Label        = "📄 Generate SoundSO Script",
-                    RelativePath = "Scripts/Sound/SoundSO.cs",
-                    Content      = TemplateLoader.Load("SoundSO.cs.txt"),
+                    Label        = "📄 Generate BaseEffect Script",
+                    RelativePath = "Scripts/Base/BaseEffect.cs",
+                    Content      = TemplateLoader.Load("BaseEffect.cs.txt"),
                 },
+
             };
 
             EditorGUILayout.HelpBox(

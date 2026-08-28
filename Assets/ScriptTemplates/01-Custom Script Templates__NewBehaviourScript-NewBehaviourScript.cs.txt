@@ -1,4 +1,4 @@
-using Eagle.BaseGame;
+using Eagle.Core;
 
 public class #SCRIPTNAME# : BaseMonoBehaviour
 {

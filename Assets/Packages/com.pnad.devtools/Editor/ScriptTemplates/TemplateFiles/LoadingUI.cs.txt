@@ -1,56 +1,21 @@
-using System.Collections;
-using Eagle.BaseGame;
+using Eagle.Core;
 using Teo.AutoReference;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingUI : BaseUI
+public class LoadingUI : BaseLoading
 {
-    [SerializeField, GetInChildren, Name("SliderBar")]
-    private Image _sliderBar;
+    [SerializeField, GetInChildren, Name("Fill")]
+    private Image _fill;
+    protected override float LoadingTimeOut => 10;
 
-    private const float TIME_OUT = 3f;
-
-    protected override void OnEnable()
+    protected override void LoadingDone()
     {
-        base.OnEnable();
-        StartLoading();
+        ActivateNextScene();
     }
 
-    public void StartLoading()
+    protected override void LoadingProgress(float progress)
     {
-        if (_sliderBar != null) _sliderBar.fillAmount = 0f;
-        StartCoroutine(LoadingRoutine());
-    }
-
-    private IEnumerator LoadingRoutine()
-    {
-        var elapsed = 0f;
-
-        while (elapsed < TIME_OUT)
-        {
-            elapsed += Time.unscaledDeltaTime;
-
-            var t = Mathf.Clamp01(elapsed / TIME_OUT);
-
-            // Ease-out: nhanh lúc đầu, chậm dần về cuối
-            var eased = 1f - Mathf.Pow(1f - t, 2f);
-
-            if (_sliderBar != null)
-                _sliderBar.fillAmount = eased;
-
-            yield return null;
-        }
-
-        if (_sliderBar != null)
-            _sliderBar.fillAmount = 1f;
-
-        yield return new WaitForSecondsRealtime(0.3f);
-
-        LoadingDone();
-    }
-
-    private void LoadingDone()
-    {
+        _fill.fillAmount = progress;
     }
 }

@@ -11,8 +11,6 @@
   "dependencies": {
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git?path=Packages/src#5.9.0",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
-    "com.eagle.basegame": "https://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@github.com/dat-dangba/EagleBaseGame.git",
-    "com.eagle.sdk": "https://github.com/dat-dangba/EagleSDK.git",
     "com.google.external-dependency-manager": "1.2.178",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.11",
